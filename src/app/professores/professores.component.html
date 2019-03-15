@@ -1,6 +1,3 @@
-<!-- <p>
-  professores works!
-</p> -->
 <div>
     <img src="assets/img/unicap.png" alt="unicap" class="rounded float-right" height="136">
     <br><br>
@@ -17,20 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prof of dataSource" (click)="selecionarLinha(prof)">
+      <tr *ngFor="let prof of professores" (click)="selecionarLinha(prof)">
         <td scope="row">{{prof.matricula}}</td>
         <td>{{prof.nome}}</td>
         <td>{{prof.email}}</td>
       </tr>
     </tbody>
 </table>
-
-<!-- <a *ngIf="flag" href="/disciplina">
-  <app-disciplina></app-disciplina>
-</a> -->
-
-<!-- <ng-template #elseDiv>
-  <p>
-    Aluno {{nome2}} works!
-  </p>
-</ng-template> -->

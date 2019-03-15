@@ -1,40 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
-import { Disciplina } from './disciplina';
+import { ProfDisc } from './prof-disc';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DisciplinaService {
-  
-  private messageSource = new BehaviorSubject('default message');
-  currentMessage = this.messageSource.asObservable();
+export class ProfDiscService {
 
   constructor(private http: HttpClient, private db: AngularFireDatabase) { }
 
-  changeMessage(message: string) {
-    this.messageSource.next(message)
-  }
-
-  insert(disc: Disciplina){
-    this.db.list('disciplina').push(disc)
+  insert(profDisc: ProfDisc){
+    this.db.list('prof_disc').push(profDisc)
     .then((result: any) => {
       console.log(result.key);
     });
   }
   
-  update(disc: Disciplina, key: string){
-    this.db.list('disciplina').update(key, disc)
+  update(profDisc: ProfDisc, key: string){
+    this.db.list('prof_disc').update(key, profDisc)
     .catch((error: any) => {
       console.error(error);
     });
   }
 
   getAll(){
-    return this.db.list('disciplina')
+    return this.db.list('prof_disc')
     .snapshotChanges()
     .pipe(
       map(changes => {
@@ -44,6 +36,6 @@ export class DisciplinaService {
   }
 
   delete(key: string){
-    this.db.object('disciplina/${key}').remove();
+    this.db.object('prof_disc/${key}').remove();
   }
 }

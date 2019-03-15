@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfessoresService } from '../professores/professores.service';
+import { Router } from '@angular/router';
+import { DisciplinaService } from './disciplina.service';
+import { Disciplina } from './disciplina';
 
-export interface Disc {
-  cod: string;
-  desc: string;
-  cred: number;
-}
+// export interface Disc {
+//   cod: string;
+//   desc: string;
+//   cred: number;
+// }
 
-const disc: Disc[] = [
-  {cod: '1', desc: 'Eng. Soft.', cred: 4},
-  {cod: '2', desc: 'Banco de Dados', cred: 5},
-  {cod: '3', desc: 'Criptografia', cred: 6}
-]
+// const disc: Disc[] = [
+//   {cod: '1', desc: 'Eng. Soft.', cred: 4},
+//   {cod: '2', desc: 'Banco de Dados', cred: 5},
+//   {cod: '3', desc: 'Criptografia', cred: 6}
+// ]
 
 export interface ProfDisc {
   codDisc: string;
@@ -33,24 +35,24 @@ const PROF_DISC: ProfDisc[] = [
 export class DisciplinaComponent implements OnInit {
 
   message: any;
-  dataSource = disc;
-  profDisc = PROF_DISC;
-  result: Disc[] = [];
+  // dataSource = disc;
+  // profDisc = PROF_DISC;
+  result: Disciplina[] = [];
 
-  constructor(private prof: ProfessoresService) { }
+  constructor(private router: Router, private discService: DisciplinaService) { }
 
   ngOnInit() {
-    this.prof.currentMessage.subscribe(message => this.message = message);
-    this.profDisc.forEach(element => {
-      if(element.matProf == this.message.matricula){
-        this.dataSource.forEach(disc => {
-          if(disc.cod == element.codDisc){
-            this.result.push(disc);
-          }
-        });
-      }
-    });
-
+    //Alterar esse codigo para buscar no banco de ProfDisc primeiro e depois o retorno buscar em Disciplina
+    // this.profService.currentMessage.subscribe(message => this.message = message);
+    // this.profDisc.forEach(element => {
+    //   if(element.matProf == this.message.matricula){
+    //     this.dataSource.forEach(disc => {
+    //       if(disc.cod == element.codDisc){
+    //         this.result.push(disc);
+    //       }
+    //     });
+    //   }
+    // });
 
   }
 
