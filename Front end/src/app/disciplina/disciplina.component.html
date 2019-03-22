@@ -1,0 +1,29 @@
+<!-- <p>
+  {{message}} works!
+</p> -->
+
+<div>
+  <img src="assets/img/unicap.png" alt="unicap" class="rounded float-right" height="136">
+  <img src="assets/img/{{message.foto}}.png" alt="unicap" class="rounded float-left" height="136"><br>
+  <p>Nome: {{message.nome}}</p>
+  <p>Matricula: {{message.matricula}}</p>
+  <p>Matricula: {{message.email}}</p>
+</div>
+
+<table class="table table-hover">
+    <thead>
+      <th >Disciplinas</th>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Creditos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let disc of result">
+        <td scope="row">{{disc.cod}}</td>
+        <td>{{disc.descricao}}</td>
+        <td>{{disc.cred}}</td>
+      </tr>
+    </tbody>
+</table>
