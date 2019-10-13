@@ -14,9 +14,14 @@ import java.util.List;
 @RequestMapping(path = "/disciplina")
 public class DisciplinaController {
 
-    @Autowired
+	
     private DisciplinaService service;
 
+	@Autowired
+	public DisciplinaController(DisciplinaService service) {
+		this.service = service;
+	}
+    
     @PostMapping(path = "/inserir")
     public ResponseEntity inserir(@RequestBody Disciplina disc){
         return service.salvar(disc);
